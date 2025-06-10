@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Mantenimiento
-from Aplicaciones.Impresoras.models import Impresora  # Ajusta la ruta a tu app real
-
+from Aplicaciones.Impresoras.models import Impresora 
 # Listado de mantenimientos
 def inicioMantenimientos(request):
     mantenimientos = Mantenimiento.objects.select_related('impresora').all()
-    return render(request, 'inicioMantenimiento.html', {'mantenimientos': mantenimientos})
+    return render(request, 'inicioM.html', {'mantenimientos': mantenimientos})
 
 # Mostrar formulario nuevo mantenimiento
 def nuevoMantenimiento(request):
@@ -29,13 +28,13 @@ def guardarMantenimiento(request):
             fecha_mantenimiento=fecha_mantenimiento,
             tecnico=tecnico,
             descripcion=descripcion,
-            informe_pdf=informe_pdf.read() if informe_pdf else None
+            informe_pdf=informe_pdf
         )
         nuevo.save()
         messages.success(request, "Mantenimiento registrado exitosamente")
         return redirect('/mantenimientos/')
     else:
-        return redirect('/mantenimientos/nuevo/')
+        return redirect('guardarMantenimiento')
 
 # Eliminar mantenimiento
 def eliminarMantenimiento(request, id):
@@ -70,7 +69,7 @@ def procesarEdicionMantenimiento(request, id):
         mantenimiento.descripcion = descripcion
 
         if informe_pdf:
-            mantenimiento.informe_pdf = informe_pdf.read()
+            mantenimiento.informe_pdf = informe_pdf
 
         mantenimiento.save()
         messages.success(request, "Mantenimiento actualizado correctamente")

@@ -20,7 +20,7 @@ def guardarImpresora(request):
     fecha_adquisicion = request.POST["fecha_adquisicion"]
     imagen = request.FILES.get("imagen") 
      
-    Impresora.objects.create(
+    nuevaImpresora=Impresora.objects.create(
         marca=marca,
         modelo=modelo,
         ubicacion=ubicacion,
@@ -32,19 +32,18 @@ def guardarImpresora(request):
 
 # Eliminar una impresora
 def eliminarImpresora(request, id):
-    impresora = Impresora.objects.get(id=id)
-    impresora.delete()
+    impresoraEliminar = Impresora.objects.get(id=id)
+    impresoraEliminar.delete()
     messages.success(request, "Impresora eliminada exitosamente")
     return redirect('/')
 
 # Mostrar formulario para editar impresora
 def editarImpresora(request, id):
-    impresora = Impresora.objects.get(id=id)
-    return render(request, "editarImpresora.html", {'impresora': impresora})
+    impresoraEditar = Impresora.objects.get(id=id)
+    return render(request, "editarImpresora.html", {'impresoraEditar': impresoraEditar})
 
 # Procesar edición
 def procesarEdicionImpresora(request, id):
-    id = request.POST
     marca = request.POST["marca"]
     modelo = request.POST["modelo"]
     ubicacion = request.POST["ubicacion"]
@@ -58,7 +57,6 @@ def procesarEdicionImpresora(request, id):
     impresora.fecha_adquisicion = fecha_adquisicion
     if imagen:
         impresora.imagen = imagen
-
     impresora.save()
     messages.success(request, "Impresora actualizada exitosamente")
     return redirect('/')

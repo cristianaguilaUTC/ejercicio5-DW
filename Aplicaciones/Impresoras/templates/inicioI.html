@@ -1,14 +1,15 @@
 {% extends './plantilla.html' %}
 {% block contenido %}
 <br>
-<h1>Listado de Impresoras</h1>
+<h1><b>Listado de impresoras</b></h1>
 <hr>
 <br>
 <div class="text-end">
-    <a href="{% url 'nueva_impresora' %}" class="btn btn-primary bg-dark">Agregar Impresora</a>
+    <a href="nuevaImpresora" class="btn btn-primary bg-dark">Agregar impresora</a>
 </div>
-<br><br>
-<table class="table table-bordered table-striped table-hover">
+<br>
+<br>
+<table class="table table-bordered table-striped table-hover" id="tbl_cargos"> 
     <thead class="bg-dark" style="color: white;">
         <tr>
             <th>ID</th>
@@ -21,33 +22,32 @@
         </tr>
     </thead>
     <tbody>
-        {% for impresora in impresoras %}
-        <tr>
-            <td>{{ impresora.id }}</td>
-            <td>{{ impresora.marca }}</td>
-            <td>{{ impresora.modelo }}</td>
-            <td>{{ impresora.ubicacion }}</td>
-            <td>{{ impresora.fecha_adquisicion }}</td>
-            <td>
-                {% if impresora.imagen %}
-                    <img src="data:image/jpeg;base64,{{ impresora.imagen|b64encode }}" width="80" height="80" />
-                {% else %}
-                    Sin imagen
-                {% endif %}
-            </td>
-            <td>
-                <a href="{% url 'editar_impresora' impresora.id %}" class="btn btn-outline-warning">
-                    <i class="fa fa-pen"></i>
-                </a>
-                <a href="#" class="btn btn-outline-danger" onclick="confirmarEliminacion('{{ impresora.id }}')">
-                    <i class="fa fa-trash"></i>
-                </a>
-            </td>
-        </tr>
+        {% for impresoraTemporal in impresoras %}
+            <tr>
+                <td>{{ impresoraTemporal.id }}</td>
+                <td>{{ impresoraTemporal.marca }}</td>
+                <td>{{ impresoraTemporal.modelo }}</td>
+                <td>{{ impresoraTemporal.ubicacion }}</td>
+                <td>{{ impresoraTemporal.fecha_adquisicion }}</td>
+                <td>
+                    {% if impresoraTemporal.imagen %}
+                        <img src="{{impresoraTemporal.imagen.url}}" width="80" height="80" />
+                    {% else %}
+                        Sin imagen
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="editarImpresora/{{impresoraTemporal.id}}" class="btn btn-outline-warning">
+                        <i class="fa fa-pen"></i>    
+                    </a>
+                    <a href="#"  class="btn btn-outline-danger" onclick="confirmarEliminacion('{{ impresoraTemporal.id }}')" >
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
         {% endfor %}
     </tbody>
-</table>
-
+</table><br><br><br><br><br><br><br><br><br><br><br><br>
 <script>
     function confirmarEliminacion(id) {
         Swal.fire({
@@ -73,4 +73,21 @@
         });
     }
 </script>
+
+<script>
+// modulo de prueba
+    $(document).ready(function() {
+       $('#tbl_cargos').DataTable({
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+            },
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    });
+</script>
+
 {% endblock %}
+
