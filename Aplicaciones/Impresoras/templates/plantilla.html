@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <title>Mna y Imp</title>
+    <title>A World</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -73,70 +73,75 @@
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
  
  </head>
+
 <body>
-  <div class="header_section">
-     <div class="header_main">
-        <div class="mobile_menu">
-           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <div class="logo_mobile"><a href="index.html"><img src="{% static 'plantilla/world/images/logo.png' %}"></a></div>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                 <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                       <a class="nav-link" href="/">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                       <a class="nav-link" href="inicioI">Impresoras</a>
-                    </li>
-                    <li class="nav-item">
-                       <a class="nav-link" href="http://127.0.0.1:8000/mantenimientos/">Mantenimientos</a>
-                    </li>
-                 </ul>
-              </div>
-           </nav>
-        </div>
-        <div class="container-fluid">
-           <div class="logo"><a href="#"><img src="/mantenimientos/"></a></div>
-           <div class="menu_main">
-              <ul>
-                 <li class="active"><a href="/">Inicio</a></li>
-                 <li><a href="inicioI">Impresoras</a></li>
-                 <li><a href="/mantenimientos/">Mantenimiento</a></li>
-              </ul>
-           </div>
-        </div>
-     </div>
-     <div class="banner_section layout_padding">
-        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-           <div class="carousel-inner">
-              <div class="carousel-item active">
-                 <div class="container">
-                    <h1 class="banner_taital">Man y Imp</h1>
-                    <p class="banner_text">somos expertos en reparar impresoras desde opsoletos a nuevas</p>
-                    <div class="read_bt"><a href="#">conose mas</a></div>
-                 </div>
-              </div>
-              <div class="carousel-item">
-                 <div class="container">
-                    <h1 class="banner_taital">Man y Imp</h1>
-                    <p class="banner_text">Somos expertos en reparar impresoras desde opsoletos a nuevas</p>
-                    <div class="read_bt"><a href="#">conose mas</a></div>
-                 </div>
-              </div>
-              <div class="carousel-item">
-                 <div class="container">
-                    <h1 class="banner_taital">Man y Imp</h1>
-                    <p class="banner_text">Somos expertos en reparar impresoras desde opsoletos a nuevas</p>
-                    <div class="read_bt"><a href="#">conose mas</a></div>
-                 </div>
-              </div>
-           </div>
-        </div>
-     </div>
-     </div>
+   <style>
+      .navbar {
+            background-color: rgba(52, 58, 64, 0.7) !important; /* Fondo oscuro con 70% de opacidad */
+            /* Otros estilos de tu navbar */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+         }
+
+         /* Si quieres que los submenús (dropdowns) también sean transparentes */
+         .navbar-dark .dropdown-menu {
+            background-color: rgba(52, 58, 64, 0.9) !important; /* Fondo oscuro con 90% de opacidad */
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+         }
+   </style>
+   <div class="header_section">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+         <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+               <img src="{% static 'plantilla/world/images/logo.png' %}" alt="Logo" style="height: 40px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavPro"
+               aria-controls="navbarNavPro" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavPro">
+               <ul class="navbar-nav ms-auto"> <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/">Impresoras</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/mantenimientos/">Mantenimientos</a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+   
+      <div style="height: 80px;"></div> 
+   
+      <div class="banner_section layout_padding">
+         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="container">
+                     <h1 class="banner_taital">Man y Imp</h1>
+                     <p class="banner_text">somos expertos en reparar impresoras desde opsoletos a nuevas</p>
+                     <div class="read_bt"><a href="#">conose mas</a></div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="container">
+                     <h1 class="banner_taital">Man y Imp</h1>
+                     <p class="banner_text">Somos expertos en reparar impresoras desde opsoletos a nuevas</p>
+                     <div class="read_bt"><a href="#">conose mas</a></div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <h1 class="banner_taital">Man y Imp</h1>
+                  <p class="banner_text">Somos expertos en reparar impresoras desde opsoletos a nuevas</p>
+                  <div class="read_bt"><a href="#">conose mas</a></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
   
   {% block contenido%}
 
@@ -166,8 +171,6 @@
             Templates</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a></p>
    </div>
 </div>
-
-
 <script src="{% static 'plantilla/world/js/jquery.min.js' %}"></script>
  <script src="{% static 'plantilla/world/js/popper.min.js' %}"></script>
  <script src="{% static 'plantilla/world/js/bootstrap.bundle.min.js' %}"></script>
