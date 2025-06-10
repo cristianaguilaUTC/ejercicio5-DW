@@ -7,8 +7,8 @@
     <div class="col-md-6 bg-light" style="border: 1px solid black; border-radius: 15px;">
         <br>
         <h1 style="text-align: center;"><b>Editar Mantenimiento</b></h1>
+        <form action="/mantenimientos/procesarEdicionMantenimiento/{{ mantenimiento.id }}/" method="post" enctype="multipart/form-data">
 
-        <form action="/procesarEdicionMantenimiento/{{ mantenimiento.id }}/" id="frm_editar_mantenimiento" enctype="multipart/form-data" method="post">
             {% csrf_token %}
 
             <label style="font-weight: bold;">Impresora:</label>

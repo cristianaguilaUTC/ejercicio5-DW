@@ -29,9 +29,10 @@
                 <td>{{ mantenimiento.fecha_mantenimiento }}</td>
                 <td>{{ mantenimiento.tecnico }}</td>
                 <td>{{ mantenimiento.descripcion }}</td>
+                <!-- pdf -->
                 <td>
                     {% if mantenimiento.informe_pdf %}
-                        <a href="editarMantenimiento/{mantenimiento.id}" class="btn btn-sm btn-info" target="_blank">Ver PDF</a>
+                        <iframe src="{{mantenimiento.informe_pdf.url}}" width="250px" height="200px" frameborder></iframe>     
                     {% else %}
                         Sin archivo
                     {% endif %}
@@ -64,7 +65,7 @@
             cancelButtonText: "Cancelar"
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "/eliminarMantenimiento/" + id;
+                window.location.href = "/mantenimientos/eliminarMantenimiento/" + id;
             } else {
                 Swal.fire({
                     title: "Cancelado",
